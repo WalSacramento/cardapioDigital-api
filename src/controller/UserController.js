@@ -100,7 +100,6 @@ export default {
 
       return res.status(200).json(user)
     } catch (error) {
-      console.log(error)
       return res.status(400).json({ error: "Erro ao atualizar usuário" })
     }
   },
@@ -119,7 +118,6 @@ export default {
 
       return res.status(204).send(user)
     } catch (error) {
-      console.log(error)
       return res.status(400).json({ error: "Erro ao deletar usuário" })
     }
   }
