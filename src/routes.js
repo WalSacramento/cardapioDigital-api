@@ -1,6 +1,7 @@
 import { Router } from "express"
 import UserController from "./controller/UserController.js"
 import CategoryController from "./controller/CategoryController.js"
+import ProductController from "./controller/ProductController.js"
 
 const router = Router()
 
@@ -28,5 +29,17 @@ router.route('/category/:id')
   .get(CategoryController.showCategory)
   .put(CategoryController.updateCategory)
   .delete(CategoryController.deleteCategory)
+
+router.route('/category/:id/products')
+  .get(CategoryController.listProductsByCategory)
+
+router.route('/product')
+  .post(ProductController.createProduct)
+  .get(ProductController.listProducts)
+
+router.route('/product/:id')
+  .get(ProductController.showProduct)
+  .put(ProductController.updateProduct)
+  .delete(ProductController.deleteProduct)
 
 export { router }

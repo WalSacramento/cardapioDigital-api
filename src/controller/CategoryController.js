@@ -41,6 +41,33 @@ export default {
     }
   },
 
+  async listProductsByCategory(req, res) {
+    const { id } = req.params
+
+    try {
+      const category = await prisma.category.findUnique({
+        where: { id }
+      })
+
+      if (!category) {
+        return res.status(404).json({ error: "Categoria não encontrada" })
+      }
+
+      const products = await prisma.product.findMany({
+        where: { categoryId: id }
+      })
+
+      if (products.length === 0) {
+        return res.status(404).json({ error: "Nenhum produto encontrado" })
+      }
+
+      return res.status(200).json(products)
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ error: "Erro ao buscar produtos" })
+    }
+  },
+
   async showCategory(req, res) {
     try {
       const { id } = req.params
