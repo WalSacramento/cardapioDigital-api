@@ -1,0 +1,20 @@
+meta {
+  name: UpdateUser
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3030/user/27ab21cc-7c08-4bbb-a45b-443b70d5c1f4
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Waldsson Sacramento",
+    "email": "waldsson@email.com",
+    "password": "senha123",
+    "role": "ADMIN"
+  }
+}
